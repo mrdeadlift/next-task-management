@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { MdAddTask } from "react-icons/md";
+import TaskCard from "./TsskCard/TaskCard";
 
 export default function MainPage() {
   return (
@@ -12,7 +13,7 @@ export default function MainPage() {
         </Link>
       </header>
       <div className="mt-8 flex flex-wrap gap-4">
-        Task Card
+        <TaskCard />
       </div>
     </div>
   );
