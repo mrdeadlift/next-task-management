@@ -1,6 +1,6 @@
+import TaskCard from "@/components/TaskCard/TaskCard";
 import Link from "next/link";
 import { MdAddTask } from "react-icons/md";
-import TaskCard from "./TsskCard/TaskCard";
 
 export default function MainPage() {
   return (
