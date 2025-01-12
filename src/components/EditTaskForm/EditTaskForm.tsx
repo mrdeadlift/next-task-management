@@ -2,7 +2,7 @@ const EditTaskForm = () => {
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-50 p-4">
       <div className="w-full max-w-md p-6 bg-white shadow-md rounded-lg">
-        <h1 className="text-2xl font-bold text-gray-700 mb-6">Create Task</h1>
+        <h1 className="text-2xl font-bold text-gray-700 mb-6">Edit Task</h1>
         <form action="">
           <div className="mb-6">
             <label htmlFor='title' className="block text-gray-700 font-bold mb-2">タイトル</label> 
