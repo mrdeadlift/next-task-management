@@ -7,13 +7,13 @@ export interface Task{
     isCompleted: boolean;
     }
 
-interface TaskModel extends Task, Document {
+export interface TaskDocument extends Task, Document {
     _id: string;
     createdAt: Date;
     updatedAt: Date;
 }
 
-const taskSchema = new Schema<TaskModel>({
+const taskSchema = new Schema<TaskDocument>({
     title: { type: String, required: true },
     description: { type: String, required: false },
     dueDate: { type: Date, required: false },

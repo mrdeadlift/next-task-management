@@ -45,3 +45,50 @@ export const createTask = async (state: FormState, formData: FormData) => {
     }
     redirect('/');
 }
+
+export const getTasks = async () => {
+    await connectDatabase();
+    return TaskModel.find();
+}
+
+export const getTaskById = async (id: string) => {
+    await connectDatabase();
+    return TaskModel.findById(id);
+}
+
+export const updateTask = async (id:string, state: FormState, formData: FormData) => {
+    const rawTask = {
+        title: formData.get('title'),
+        description: formData.get('description'),
+        dueDate: formData.get('dueDate'),
+        isCompleted: Boolean(formData.get('isCompleted')),
+    }
+
+    try {
+        const validatedTask = taskSchema.parse(rawTask);
+        await connectDatabase();
+        await TaskModel.updateOne({_id: id}, validatedTask);
+    } catch (error) {
+        if (error instanceof z.ZodError) {
+            return { error: error.errors[0].message };
+        }
+        state.error = "タスクの更新に失敗しました";
+        return state;
+    }
+    redirect('/');
+}
+
+export const deleteTask = async (id:string, state: FormState) => {
+
+    try {
+        await connectDatabase();
+        await TaskModel.deleteOne({_id: id});
+    } catch (error) {
+        if (error instanceof z.ZodError) {
+            return { error: error.errors[0].message };
+        }
+        state.error = "タスクの削除に失敗しました";
+        return state;
+    }
+    redirect('/');
+}
