@@ -45,3 +45,8 @@ export const createTask = async (state: FormState, formData: FormData) => {
     }
     redirect('/');
 }
+
+export const getTasks = async () => {
+    await connectDatabase();
+    return TaskModel.find();
+}
