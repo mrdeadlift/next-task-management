@@ -1,4 +1,4 @@
-import { Task, TaskDocument, TaskDocumentString } from "@/models/task";
+import {TaskDocument} from "@/models/task";
 import TaskDeleteButton from "./TaskDeleteButton/TaskDeleteButton"
 import TaskEditButton from "./TaskEditButton/TaskEditButton"
 

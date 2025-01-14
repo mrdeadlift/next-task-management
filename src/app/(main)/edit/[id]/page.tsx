@@ -11,6 +11,7 @@ const fetchTaskById = async (id: string): Promise<TaskDocument> => {
     const data:TaskDocument = await getTaskById(id);
     return data;
   } catch (error) {
+    console.error(error);
     throw new Error("Failed to fetch task");
   }
 }
@@ -25,6 +26,7 @@ const EditTaskPage = async ({params}: Params) => {
       </div>
     )
   } catch (error) { 
+    console.error(error);
     throw new Error("Failed to fetch task");
   }
   

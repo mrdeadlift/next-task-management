@@ -8,6 +8,7 @@ const fetchAllTasks = async () => {
     const data = await getTasks();
     return data;
   } catch (error) {
+    console.error(error);
     throw new Error("Failed to fetch tasks");
   }
 } 
