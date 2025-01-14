@@ -21,7 +21,7 @@ const EditTaskPage = async ({params}: Params) => {
     const task = await fetchTaskById(id);
     return (
       <div>
-        <EditTaskForm task={task} data-superjson />
+        <EditTaskForm taskString={JSON.stringify(task)} />
       </div>
     )
   } catch (error) { 
