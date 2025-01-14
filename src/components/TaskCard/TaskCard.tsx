@@ -1,4 +1,4 @@
-import { Task, TaskDocument } from "@/models/task";
+import { Task, TaskDocument, TaskDocumentString } from "@/models/task";
 import TaskDeleteButton from "./TaskDeleteButton/TaskDeleteButton"
 import TaskEditButton from "./TaskEditButton/TaskEditButton"
 
@@ -16,8 +16,7 @@ const TaskCard = (taskProps : TaskCardProps) => {
             <div className="text-gray-600 text-clamp-3">{task.description}</div>
         </header>
         <div className="mb-4">
-            <div className="text-gray-800">{task.dueDate.toLocaleDateString()}</div>
-            {/* <div className="text-gray-800">優先度: 高</div> */}
+            <div className="text-gray-800">{task.dueDate.toISOString()}</div>
         </div>
         <footer className="flex gap-4 mt-1">
         <div>
@@ -25,8 +24,8 @@ const TaskCard = (taskProps : TaskCardProps) => {
                     ${task.isCompleted ? 'bg-green-500' : 'bg-red-500'}`} >{task.isCompleted ? "Completed" : "Incomplete"}</div>
         </div>
            <div className="flex gap-2 ml-auto">
-                <TaskEditButton id={task._id} />
-                <TaskDeleteButton id={task._id} />
+                <TaskEditButton id={task._id.toString()} />
+                <TaskDeleteButton id={task._id.toString()} />
             </div>
         </footer>
     </div>

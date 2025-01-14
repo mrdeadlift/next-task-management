@@ -13,6 +13,16 @@ export interface TaskDocument extends Task, Document {
     updatedAt: Date;
 }
 
+export interface TaskDocumentString {
+    _id: string;
+    title: string;
+    description: string;
+    dueDate: string;
+    isCompleted: boolean;
+    createdAt: string;
+    updatedAt: string;
+}
+
 const taskSchema = new Schema<TaskDocument>({
     title: { type: String, required: true },
     description: { type: String, required: false },

@@ -2,15 +2,16 @@
 
 import { FormState, updateTask } from "@/actions/task";
 import { TaskDocument } from "@/models/task"
-import { useState } from "react";
-import { useFormState, useFormStatus } from "react-dom";
+import { useActionState, useState } from "react";
+import { useFormStatus } from "react-dom";
 
 interface EditTaskFormProps {
-  task: TaskDocument;
+  taskString: string;
 }
 
 const EditTaskForm = (editTaskFormProps : EditTaskFormProps) => {
-  const { task } = editTaskFormProps;
+  const { taskString } = editTaskFormProps;
+  const task = JSON.parse(taskString) as TaskDocument;
 
   const [title, setTitle] = useState(task.title);
   const [description, setDescription] = useState(task.description);
@@ -19,7 +20,7 @@ const EditTaskForm = (editTaskFormProps : EditTaskFormProps) => {
   
   const updateTaskId = updateTask.bind(null, task._id);
   const initialState: FormState = { error: "" };
-  const [state, formAction] = useFormState(updateTaskId ,initialState);
+  const [state, formAction] = useActionState(updateTaskId ,initialState);
 
   const SubmitButton = () => {
     const { pending } = useFormStatus();
