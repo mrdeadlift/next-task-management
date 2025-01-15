@@ -2,9 +2,7 @@ import { getTaskById } from "@/actions/task";
 import EditTaskForm from "@/components/EditTaskForm/EditTaskForm"
 import { TaskDocument } from "@/models/task";
 
-interface Params {
- params: {id: string};
-}
+type Params = Promise<{ id: string }>;
 
 const fetchTaskById = async (id: string): Promise<TaskDocument> => {
   try {
@@ -16,9 +14,9 @@ const fetchTaskById = async (id: string): Promise<TaskDocument> => {
   }
 }
 
-const EditTaskPage = async ({params}: Params) => {
+const EditTaskPage = async (props: { params : Params}) => {
   try {
-    const {id} = await params;
+    const {id} = await props.params;
     const task = await fetchTaskById(id);
     return (
       <div>
